@@ -1,0 +1,121 @@
+<div class="container-fluid h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-12 text-center">
+            <h1>
+                Matching Analytics
+            </h1>
+        </div>
+
+        <div class="col-12 text-center">
+            <div class="row">
+                <div class="col-md-8">
+                    <nb-card size="giant">
+                        <nb-card-header>
+                            <h2>
+                                Camera
+                            </h2>
+                        </nb-card-header>
+                        <nb-card-body>
+                            <video [hidden]="!useCamera" height="100%" class="mx-auto" #videoElement></video>
+                        </nb-card-body>
+                        <nb-card-footer>
+                            <nb-button-group size="giant" status="success">
+                                <button nbButtonToggle (click)="goBack()">
+                                    <nb-icon icon="close-circle"></nb-icon>
+                                    Close
+                                </button>
+                                <button nbButtonToggle (click)="toggleReading()">
+                                    <ng-container *ngIf="!isReading">
+                                        Start
+                                        <nb-icon icon="play-circle"></nb-icon>
+                                    </ng-container>
+                                    <ng-container *ngIf="isReading">
+                                        Reset
+                                        <nb-icon icon="stop-circle"></nb-icon>
+                                    </ng-container>
+                                </button>
+                            </nb-button-group>
+                        </nb-card-footer>
+                    </nb-card>
+                </div>
+                <div class="col-md-4">
+                    <h2>
+                        Results:
+                    </h2>
+
+                    <nb-accordion>
+                        <nb-accordion-item expanded>
+                            <nb-accordion-item-header>
+                                Authentication Details ({{100 * (authFlags?.faceMatch ?? 0) / (((authFlags?.faceMatch ??
+                                0))+(authFlags?.faceMisMatch + 1)) | number:'1.0-2'}}%)
+                            </nb-accordion-item-header>
+                            <nb-accordion-item-body>
+                                <p class="">
+                                    <span class="subtitle-2 mb-3">Matched: </span>
+                                    <span class="h2 ml-3">{{authFlags?.faceMatch ?? 0 }}
+                                    </span>
+                                </p>
+                                <p class="">
+                                    <span class="subtitle-2 mb-3">Mismatch: </span>
+                                    <span class="h2 ml-3 ">{{authFlags?.faceMisMatch ?? 0 }}
+                                    </span>
+                                </p>
+                                <p class="">
+                                    <span class="subtitle-2 mb-3">Blinked: </span>
+                                    <span class="h2 ml-3">{{authFlags?.eyesClosed ?? 0 }}
+                                    </span>
+                                </p>
+                                <p class="">
+                                    <span class="subtitle-2 mb-3">Phone Visible: </span>
+                                    <span class="h2 ml-3">{{authFlags?.phoneVisibleCount ?? 0 }}
+                                    </span>
+                                </p>
+                                <p class="">
+                                    <span class="subtitle-2 mb-3">Wrist Visible: </span>
+                                    <span class="h2 ml-3">{{authFlags?.wristVisibleCount ?? 0 }}
+                                    </span>
+                                </p>
+                            </nb-accordion-item-body>
+                        </nb-accordion-item>
+
+                        <nb-accordion-item>
+                            <nb-accordion-item-header>
+                                Face Info:
+                            </nb-accordion-item-header>
+                            <nb-accordion-item-body>
+                                <p class="">
+                                    <span class="subtitle-2 mb-3">Gender: </span>
+                                    <span class="h2 ml-3">{{faceData?.gender }}
+                                    </span>
+                                </p>
+                                <p class="">
+                                    <span class="subtitle-2 mb-3">Age: </span>
+                                    <span class="h2 ml-3">{{faceData?.age }}
+                                    </span>
+                                </p>
+                                <p class="">
+                                    <span class="subtitle-2 mb-3">Distance from screen (Iris): </span>
+                                    <span class="h2 ml-3">{{faceData?.iris }}
+                                    </span>
+                                </p>
+                            </nb-accordion-item-body>
+                        </nb-accordion-item>
+
+                        <nb-accordion-item>
+                            <nb-accordion-item-header>
+                                Gestures
+                            </nb-accordion-item-header>
+                            <nb-accordion-item-body>
+                                <p class="" *ngFor="let gesture of gestureData">
+                                    <span class="subtitle-2 mb-3">{{gesture?.gesture }}</span>
+                                </p>
+                            </nb-accordion-item-body>
+                        </nb-accordion-item>
+                    </nb-accordion>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

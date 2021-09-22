@@ -1,0 +1,32 @@
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-12 text-center">
+            <h1>
+                Set Reference Picture
+            </h1>
+        </div>
+
+
+        <div class="col-6 mx-auto text-center">
+            <nb-card size="">
+                <nb-card-header>
+                    <div class="col-12 pt-3">
+                        <h6>Photo I</h6>
+                    </div>
+                </nb-card-header>
+                <nb-card-body style="min-height: 330px !important;">
+                    <img *ngIf="image1" [src]="image1" style=" width: 90%;" #image alt="">
+                </nb-card-body>
+                <nb-card-footer>
+                    <button [disabled]="image1?.length > 0" [nbSpinner]="image1?.length > 0" size="giant"
+                        (click)="setPhoto()" nbButton fullWidth status="primary" hero>Set Photo</button>
+                </nb-card-footer>
+            </nb-card>
+        </div>
+        <div class="col-12">
+            <p class="mt-2 text-center">Made with <nb-icon icon="heart"></nb-icon> - <a href="https://www.linkedin.com/in/michaelmadume/"
+                target="blank"> <b> Michael Madume</b></a></p>
+        </div>
+
+    </div>
+</div>

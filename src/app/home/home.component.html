@@ -1,0 +1,21 @@
+<div class="container h-100">
+  <div class="row h-100 justify-content-center align-items-center">
+    <div class="col-12">
+      <h1 style="font-size: 3rem;" class="text-center">
+        Face Recognition <br> <span class="caption"> 100% Offline </span>
+      </h1>
+    </div>
+    <div class="col-12">
+      <ng-lottie height="300px" [options]="anim" (animationCreated)="animationCreated($event)">
+      </ng-lottie>
+    </div>
+    <div class="col-12 col-md-8 text-center mx-auto mt-5">
+      <nb-progress-bar size="tiny" status="{{progress !== 100 ? 'primary' : 'success'}}" [value]="progress">
+      </nb-progress-bar>
+      <p class="xyz-in mt-5" *ngIf="progress > 40 && progress !== 100" xyz="fade in">Any moment now... 👌🏾</p>
+      <p class="xyz-in mt-5" *ngIf="progress === 100" xyz="fade in">Finally... 😅</p>
+      <p class="mt-5">Made with <nb-icon icon="heart"></nb-icon> - <a href="https://www.linkedin.com/in/michaelmadume/"
+          target="blank"> <b> Michael Madume</b></a></p>
+    </div>
+  </div>
+</div>

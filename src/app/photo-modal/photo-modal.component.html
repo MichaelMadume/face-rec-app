@@ -1,0 +1,39 @@
+<nb-card class="xyz-in" xyz="fade down delay-2">
+    <nb-card-header>
+        <div class="row">
+            <div class="col-auto">
+                <h6>Set Photo</h6>
+            </div>
+        </div>
+    </nb-card-header>
+    <nb-card-body>
+        <div class="col-12" [hidden]="useCamera">
+            <input (change)="extractImage($event)" accept="image/*" size="medium" type="file" id="files"
+                style="display: none;" #file>
+            <div class="col-12 mt-3">
+                <button fullWidth nbButton status="primary" (click)="file.click()">
+                    <nb-icon icon="folder-add"></nb-icon> From File
+                </button>
+            </div>
+            <div class="col-12 mt-5">
+                <button fullWidth nbButton status="primary" (click)="initCameraAI()">
+                    <nb-icon icon="camara-outline"></nb-icon> From Camera
+                </button>
+
+            </div>
+        </div>
+        <div class="video-container">
+            <canvas width="300px" height="300px" [hidden]="!useCamera" id="canvas" #canvas class="canvas"></canvas>
+            <video [hidden]="!useCamera" class="mx-auto" #videoElement></video>
+        </div>
+    </nb-card-body>
+    <nb-card-footer *ngIf="useCamera">
+        <div class="row">
+            <div class="col">
+                <button (click)="capturePhoto()" [disabled]="!allowCapture" nbButton fullWidth status="primary">
+                    Capture
+                </button>
+            </div>
+        </div>
+    </nb-card-footer>
+</nb-card>

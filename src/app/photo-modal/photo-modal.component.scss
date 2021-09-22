@@ -1,0 +1,16 @@
+video {
+    width: 300px;
+    border-radius: var(--card-border-radius);
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+}
+canvas {
+    width: 300px;
+    border-radius: var(--card-border-radius);
+    position: absolute;
+    z-index: 999;
+}
+.video-container {
+    position: relative;
+}

@@ -1,0 +1,55 @@
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-12 text-center">
+            <h1>
+                Similarity Comparison
+            </h1>
+
+            <div class="col-6 mt-4 mx-auto">
+                <nb-alert *ngIf="comparisonMessageCode >= 0" [outline]="statuses[comparisonMessageCode] ?? 'basic'" role="alert">
+                    <p class="alert-title"><b>VALIDATION</b></p>
+                    <p class="paragraph-2">
+                        {{comparisonMessages[comparisonMessageCode]}}
+                    </p>
+                    <!-- <p>
+                        {{closeness}}%
+                    </p> -->
+                </nb-alert>
+            </div>
+        </div>
+
+
+        <div class="col-6 text-center">
+            <nb-card size="">
+                <nb-card-header>
+                    <div class="col-12 pt-3">
+                        <h6>Photo I</h6>
+                    </div>
+                </nb-card-header>
+                <nb-card-body style="min-height: 330px !important;">
+                    <img *ngIf="image1" [src]="image1" style=" width: 300px;" #imageI alt="">
+                </nb-card-body>
+                <nb-card-footer>
+                    <button (click)="setPhoto(1)" nbButton fullWidth status="primary" hero>Set Photo</button>
+                </nb-card-footer>
+            </nb-card>
+        </div>
+
+        <div class="col-6 text-center">
+            <nb-card size="">
+                <nb-card-header>
+                    <div class="col-12 pt-3">
+                        <h6>Photo II</h6>
+                    </div>
+                </nb-card-header>
+                <nb-card-body style="min-height: 330px !important;">
+                    <img *ngIf="image2" [src]="image2" style=" width: 300px;" #imageII alt="">
+                </nb-card-body>
+                <nb-card-footer>
+                    <button (click)="setPhoto(2)" nbButton fullWidth status="primary" hero>Set Photo</button>
+                </nb-card-footer>
+            </nb-card>
+        </div>
+
+    </div>
+</div>
